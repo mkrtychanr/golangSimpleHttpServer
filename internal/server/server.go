@@ -6,19 +6,32 @@ import (
 )
 
 type Server struct {
-	cache map[string]model.Order
-	db    *database.Database
+	cache  map[string]model.Order
+	db     *database.Database
+	config *config
+}
+
+func setConfigs(path string) (*database.Database, *config, error) {
+	db, err := database.SetConfig(path)
+	if err != nil {
+		return nil, nil, err
+	}
+	config, err := newConfig(path)
+	if err != nil {
+		return nil, nil, err
+	}
+	return db, config, nil
 }
 
 func NewServer(path string) (*Server, error) {
-	db, err := database.SetConfig(path)
+	db, config, err := setConfigs(path)
 	if err != nil {
 		return nil, err
 	}
-	cache := make(map[string]model.Order)
 	return &Server{
-		db:    db,
-		cache: cache,
+		db:     db,
+		cache:  make(map[string]model.Order),
+		config: config,
 	}, nil
 }
 
