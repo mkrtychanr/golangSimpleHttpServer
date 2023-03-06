@@ -1,6 +1,7 @@
-.PHONY: build
-build:
-	go build -v ./cmd/apiserver
+.PHONY: server
+server:
+	go build -v ./cmd/server
+	./server
 
 .PHONY: migrate
 migrate:
