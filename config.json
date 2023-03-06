@@ -1,0 +1,11 @@
+{
+    "server": {
+        "host": "127.0.0.1",
+        "port": ":1234"
+    },
+    "database": {
+        "database": "s21",
+        "user": "admin",
+        "password": "admin"
+    }
+}
