@@ -3,6 +3,7 @@ module github.com/mkrtychanr/wildberries_L0
 go 1.20
 
 require (
+	github.com/go-chi/chi/v5 v5.0.8 // indirect
 	github.com/go-pg/pg v8.0.7+incompatible // indirect
 	github.com/go-pg/pg/v10 v10.11.0 // indirect
 	github.com/go-pg/zerochecker v0.2.0 // indirect
