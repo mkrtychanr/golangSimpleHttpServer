@@ -8,3 +8,9 @@ services:
       POSTGRES_PASSWORD: "admin"
     ports:
       - "5432:5432"
+
+  nats-streaming:
+    image: nats-streaming
+    ports:
+      - "4222:4222"
+      - "8222:8222"
