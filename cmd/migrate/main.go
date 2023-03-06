@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	db, err := database.SetConfig("dbconfig.json")
+	db, err := database.SetConfig("config.json")
 	if err != nil {
 		panic(err)
 	}
