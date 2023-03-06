@@ -11,15 +11,19 @@ type config struct {
 	Password string `json:"password"`
 }
 
+type configWrap struct {
+	Config config `json:"database"`
+}
+
 func newConfig(path string) (*config, error) {
 	b, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	config := config{}
+	config := configWrap{}
 	err = json.Unmarshal(b, &config)
 	if err != nil {
 		return nil, err
 	}
-	return &config, nil
+	return &config.Config, nil
 }
