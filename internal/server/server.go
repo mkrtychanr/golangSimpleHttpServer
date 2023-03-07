@@ -2,13 +2,11 @@ package server
 
 import (
 	"fmt"
-	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
 	"github.com/mkrtychanr/wildberries_L0/internal/database"
 	"github.com/mkrtychanr/wildberries_L0/internal/model"
 	"github.com/sirupsen/logrus"
@@ -46,15 +44,6 @@ func NewServer(path string) (*Server, error) {
 	}, nil
 }
 
-func (s *Server) startRouting() {
-	s.router.Use(middleware.Logger)
-	s.router.Get("/{id}", s.handleGetId)
-	address := fmt.Sprintf("%s%s", s.config.Host, s.config.Port)
-	str := fmt.Sprintf("Server is up on %s%s", s.config.Host, s.config.Port)
-	logrus.Info(str)
-	http.ListenAndServe(address, s.router)
-}
-
 func (s *Server) Up() {
 	s.db.Open()
 	logrus.Info("Database is up")
@@ -72,14 +61,4 @@ func (s *Server) Up() {
 func (s *Server) Down() {
 	logrus.Info("Server is down")
 	s.db.Close()
-}
-
-func (s *Server) handleGetId(writer http.ResponseWriter, request *http.Request) {
-	id := chi.URLParam(request, "id")
-	_, ok := s.cache[id]
-	if !ok {
-		writer.Write([]byte("Something went wrong"))
-		return
-	}
-	writer.Write([]byte(id))
 }
