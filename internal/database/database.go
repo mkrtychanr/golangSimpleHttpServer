@@ -2,6 +2,7 @@ package database
 
 import (
 	"github.com/go-pg/pg"
+	"github.com/mkrtychanr/wildberries_L0/internal/model"
 )
 
 type Database struct {
@@ -27,4 +28,11 @@ func (db *Database) Open() {
 
 func (db *Database) Close() {
 	db.DB.Close()
+}
+
+func (db *Database) AddOrder(order model.Order) error {
+	if _, err := db.DB.Model(&order).Insert(); err != nil {
+		return err
+	}
+	return nil
 }
