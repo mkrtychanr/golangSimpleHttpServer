@@ -17,5 +17,5 @@ type Order struct {
 	ShardKey          string    `json:"shardkey"`
 	SmId              int       `json:"sm_id"`
 	DateCreated       time.Time `json:"date_created"`
-	OffShard          string    `json:"off_shard"`
+	OofShard          string    `json:"oof_shard"`
 }
