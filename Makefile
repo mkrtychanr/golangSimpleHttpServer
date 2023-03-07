@@ -12,4 +12,12 @@ migrate:
 test:
 	go test -v -race -timeout 30s ./...
 
+.PHONY: up
+up:
+	docker-compose up -d
+
+.PHONY: down
+down:
+	docker-compose down
+
 .DEFAULT_GOAL := build

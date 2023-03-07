@@ -10,7 +10,10 @@ services:
       - "5432:5432"
 
   nats-streaming:
+    # command:
+    # - nats-streaming
+    container_name: nats-streaming
     image: nats-streaming
     ports:
-      - "4222:4222"
-      - "8222:8222"
+    - 4222:4222
+    - 8222:8222
