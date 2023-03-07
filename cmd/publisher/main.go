@@ -15,10 +15,10 @@ func main() {
 	defer sc.Close()
 	path := ""
 	fmt.Printf("Enter the path to file: ")
-	fmt.Scan(path)
+	fmt.Scan(&path)
 	b, err := os.ReadFile(path)
 	if err != nil {
 		panic(err)
 	}
-	sc.Publish("addNewUser", b)
+	sc.Publish("addNewOrder", b)
 }

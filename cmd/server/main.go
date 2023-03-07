@@ -26,7 +26,7 @@ func main() {
 		panic(err)
 	}
 	HandleInterrupt(server)
-	server.Up()
-	for {
+	if err := server.Up(); err != nil {
+		panic(err)
 	}
 }

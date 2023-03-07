@@ -6,8 +6,9 @@ import (
 )
 
 type config struct {
-	Host string `json:"host"`
-	Port string `json:"port"`
+	Host             string `json:"host"`
+	Port             string `json:"port"`
+	SubscribeSubject string `json:"subscribe_subject"`
 }
 
 type configWrap struct {

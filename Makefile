@@ -12,6 +12,10 @@ migrate:
 test:
 	go test -v -race -timeout 30s ./...
 
+.PHONY: publisher
+publisher:
+	go build -v ./cmd/publisher
+
 .PHONY: up
 up:
 	docker-compose up -d
