@@ -1,4 +1,4 @@
-# wildberries_L0
+# golangSimpleHttpServer
 wildberries test task L0
 
 1. make up - поднять контейнеры
